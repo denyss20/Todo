@@ -71,6 +71,7 @@ function App() {
         editTodo={editTodo}
         editingTodoId={editingTodoId}
         saveEditTodo={saveEditTodo}
+        setTodos={setTodos}
       />
     </div>
   );

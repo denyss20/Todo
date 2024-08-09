@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoItem = ({ todo, removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo }) => {
+const TodoItem = ({ provided, todo, removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo }) => {
   const [newTask, setNewTask] = React.useState(todo.task);
 
   const handleSave = () => {
@@ -8,7 +8,7 @@ const TodoItem = ({ todo, removeTodo, toggleComplete, editTodo, editingTodoId, s
   };
 
   return (
-    <li >
+    <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
       {editingTodoId === todo.id ? (
         <div className="ml-auto flex space-x-2">
           <input
