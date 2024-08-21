@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTodos } from './hooks/TodoLogic';
 
-const TodoItem = ({ provided, todo, removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo }) => {
-  const [newTask, setNewTask] = React.useState(todo.task);
+const TodoItem = ({ provided, todo }) => {
+  const {removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo} = useTodos()
+  const [newTask, setNewTask] = React.useState(todo.task)
 
   const handleSave = () => {
-    saveEditTodo(todo.id, newTask);
+    saveEditTodo(todo.id, newTask)
   };
 
   return (

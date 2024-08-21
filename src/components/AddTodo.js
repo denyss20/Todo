@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { useTodos } from './hooks/TodoLogic';
 
-const AddTodo = ({ addTodo }) => {
-  const [task, setTask] = useState('');
-  const [date, setDate] = useState('');
+const AddTodo = () => {
+  const {addTodo} = useTodos()
+  const [task, setTask] = useState('')
+  const [date, setDate] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (task.trim() && date) {
-      addTodo(task, date);
-      setTask('');
-      setDate('');
+      addTodo(task, date)
+      setTask('')
+      setDate('')
     }
   };
 

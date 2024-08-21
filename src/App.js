@@ -3,9 +3,10 @@ import './App.css';
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 import FilteredTodo from './components/FilteredTodo';
-import TodoLogic from './components/hooks/TodoLogic';
+import { useTodos } from './components/hooks/TodoLogic';
 
 function App() {
+
   const {
   editingTodoId,
   filter,
@@ -16,7 +17,7 @@ function App() {
   editTodo,
   saveEditTodo,
   setFilter
-  } = TodoLogic ()
+  } = useTodos()
 
   return (
     <div className="text-center">

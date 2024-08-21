@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 
-const TodoLogic = () => {
+  const TodoContext = createContext()
+
+  export const useTodos = () => useContext(TodoContext)
+
+  export const TodoLogic = ({ children }) => {
   const [todos, setTodos] = useState([])
   const [editingTodoId, setEditingTodoId] = useState(null)
   const [filter, setFilter] = useState('all')
+
 
   useEffect(() => {
     const savedTodos = JSON.parse(localStorage.getItem('todos'))
@@ -53,18 +58,24 @@ const TodoLogic = () => {
     setEditingTodoId(null)
   }
 
-  return {
-    todos,
-    editingTodoId,
-    filter,
-    addTodo,
-    toggleComplete,
-    removeTodo,
-    filteredTodos,
-    editTodo,
-    saveEditTodo,
-    setFilter
+  return (
+    <TodoContext.Provider
+      value={{
+        todos,
+        editingTodoId,
+        filter,
+        addTodo,
+        toggleComplete,
+        removeTodo,
+        filteredTodos,
+        editTodo,
+        saveEditTodo,
+        setFilter
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+    )
   }
-}
 
 export default TodoLogic;

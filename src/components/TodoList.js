@@ -1,9 +1,11 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useTodos } from './hooks/TodoLogic';
 
+const TodoList = ({ removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo }) => {
 
-const TodoList = ({ todos, removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo }) => {
+  const {todos, setTodos} = useTodos()
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -12,7 +14,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete, editTodo, editingTodoId, 
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
 
-    // setTodos(items);
+    setTodos(items);
   }
 
   return (

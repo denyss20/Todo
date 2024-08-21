@@ -1,6 +1,10 @@
 import React from 'react';
+import { useTodos } from './hooks/TodoLogic';
 
-const FilteredTodo = ({ filter, setFilter }) => {
+
+const FilteredTodo = () => {
+
+  const {filter, setFilter} = useTodos()
 
   return (
     <div className="flex items-center justify-center gap-5">
