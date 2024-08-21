@@ -1,6 +1,7 @@
 import React from 'react';
 
 const FilteredTodo = ({ filter, setFilter }) => {
+
   return (
     <div className="flex items-center justify-center gap-5">
       <button

@@ -3,7 +3,7 @@ import TodoItem from './TodoItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
-const TodoList = ({ todos, removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo, setTodos }) => {
+const TodoList = ({ todos, removeTodo, toggleComplete, editTodo, editingTodoId, saveEditTodo }) => {
 
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
@@ -12,7 +12,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete, editTodo, editingTodoId, 
     const [reorderedItem] = items.splice(result.source.index, 1);
     items.splice(result.destination.index, 0, reorderedItem);
 
-    setTodos(items);
+    // setTodos(items);
   }
 
   return (
